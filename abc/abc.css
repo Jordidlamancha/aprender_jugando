@@ -1,0 +1,160 @@
+body {
+    font-family: 'Comic Neue', cursive;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.app-container {
+    background-color: #f7bce3;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+}
+
+h1 {
+    color: #ff6b6b;
+    margin-bottom: 20px;
+}
+
+.game-controls {
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: #4ecdc4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Comic Neue', cursive;
+}
+
+.btn:hover {
+    background-color: #3dbeb5;
+    transform: scale(1.05);
+}
+
+.score-container {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.instruction-container {
+    margin-bottom: 20px;
+    min-height: 30px;
+}
+
+#instruction {
+    font-size: 18px;
+    color: #666;
+}
+
+.letter-container {
+    margin: 20px 0;
+}
+
+.letter-display {
+    font-size: 100px;
+    font-weight: bold;
+    color: #ff9f43;
+    background-color: #f7f7f7;
+    border-radius: 15px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.alphabet-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.letter-card {
+    background-color: #74b9ff;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.letter-card:hover {
+    transform: scale(1.1);
+}
+
+.letter-card.correct {
+    background-color: #2ecc71;
+    animation: pulse 0.5s;
+}
+
+.letter-card.incorrect {
+    background-color: #e74c3c;
+    animation: shake 0.5s;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+@media (max-width: 600px) {
+    .alphabet-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .letter-card {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+    
+    .letter-display {
+        font-size: 70px;
+        width: 90px;
+        height: 90px;
+    }
+
+    .volume-control {
+    margin: 15px 0;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 8px;
+}
+.volume-control label {
+    display: block;
+    margin: 5px 0;
+}
+}
