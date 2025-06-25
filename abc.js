@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-
+    // Bloqueador de inspección
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
         alert('¡Vamos a seguir aprendiendo! Esta función está deshabilitada.');
     });
 
     document.addEventListener('keydown', function(e) {
-        // Bloquear F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
         if (e.key === 'F12' || 
             (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || 
             (e.ctrlKey && e.key === 'u')) {
@@ -23,26 +22,36 @@ document.addEventListener('DOMContentLoaded', function() {
     const instructionDisplay = document.getElementById('instruction');
     const currentLetterDisplay = document.getElementById('current-letter');
     
+    // ========== NUEVO ELEMENTO ========== //
+    const pointsInput = document.getElementById('points-input'); // Añade este input en tu HTML
+    // ========== FIN NUEVO ELEMENTO ========== //
+    
     // Variables del juego
     let score = 0;
     let currentLetter = '';
     let isGameActive = false;
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÑ'.split('');
+    const alphabet = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split('');
     const letterSounds = {};
+    const TOTAL_LETTERS = alphabet.length;
+    // ========== NUEVA VARIABLE ========== //
+    let pointsToWin = 27; // Valor por defecto
+    // ========== FIN NUEVA VARIABLE ========== //
     
     // Sonidos locales
     const correctSound = new Audio('./media/effects/cheer.mp3');
     const wrongSound = new Audio('./media/effects/lose.mp3');
+    const victorySound = new Audio('./media/effects/applause.mp3'); // Corregido el nombre del archivo
 
-    // Ajustar volúmenes (valores entre 0 y 1)
-    correctSound.volume = 0.1;  // 50% de volumen para los efectos
-    wrongSound.volume = 0.1;    // 50% de volumen para los efectos
+    // Ajustar volúmenes
+    correctSound.volume = 0.1;
+    wrongSound.volume = 0.1;
+    victorySound.volume = 0.2;
     
     // Precargar sonidos de letras
     function preloadLetterSounds() {
         alphabet.forEach(letter => {
             letterSounds[letter] = new Audio(`./media/words/${letter}.mp3`);
-            letterSounds[letter].volume = 1.0;  // 80% de volumen para las letras
+            letterSounds[letter].volume = 1.0;
             letterSounds[letter].onerror = function() {
                 console.error(`Error al cargar el sonido para la letra ${letter}`);
             };
@@ -78,10 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleCorrectAnswer(card) {
         card.classList.add('correct');
         
-        // Reproducir sonido de la letra correcta
         playLetterSound(currentLetter);
-        
-        // Reproducir sonido de acierto
         correctSound.currentTime = 0;
         correctSound.play();
         
@@ -90,18 +96,19 @@ document.addEventListener('DOMContentLoaded', function() {
         
         setTimeout(() => {
             card.classList.remove('correct');
-            pickRandomLetter();
-        }, 5000);
+            // ========== ACTUALIZADO ========== //
+            if (score < pointsToWin) { // Usamos pointsToWin en lugar de TOTAL_LETTERS
+            // ========== FIN ACTUALIZADO ========== //
+                pickRandomLetter();
+            }
+        }, 3000);
     }
     
     // Manejar respuesta incorrecta
     function handleWrongAnswer(card) {
         card.classList.add('incorrect');
-        
-        // Reproducir sonido de error
         wrongSound.currentTime = 0;
         wrongSound.play();
-        
         updateScore(-1);
         
         setTimeout(() => {
@@ -119,15 +126,41 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Actualizar puntuación
     function updateScore(points) {
-        score = Math.max(0, score + points); // No permitir puntuación negativa
+        score = Math.max(0, score + points);
         scoreDisplay.textContent = score;
+        
+        // ========== ACTUALIZADO ========== //
+        if (score >= pointsToWin) { // Usamos pointsToWin en lugar de TOTAL_LETTERS
+        // ========== FIN ACTUALIZADO ========== //
+            gameComplete();
+        }
+    }
+    
+    function gameComplete() {
+        isGameActive = false;
+        victorySound.currentTime = 0;
+        victorySound.play();
+        
+        // ========== ACTUALIZADO ========== //
+        instructionDisplay.textContent = `¡GANASTE! Has alcanzado ${pointsToWin} puntos.`;
+        // ========== FIN ACTUALIZADO ========== //
+        currentLetterDisplay.textContent = '★';
+        
+        // Celebración mejorada
+        showConfetti();
+        setTimeout(() => {
+            showConfetti();
+            showConfetti();
+        }, 1000);
+        
+        startBtn.disabled = false;
     }
     
     // Mostrar confeti
     function showConfetti() {
         confetti({
-            particleCount: 150,
-            spread: 70,
+            particleCount: 200,
+            spread: 100,
             origin: { y: 0.6 },
             colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff']
         });
@@ -137,21 +170,28 @@ document.addEventListener('DOMContentLoaded', function() {
     function pickRandomLetter() {
         const randomIndex = Math.floor(Math.random() * alphabet.length);
         currentLetter = alphabet[randomIndex];
-        currentLetterDisplay.textContent = '?'; // Mostrar "?" en lugar de la letra
+        currentLetterDisplay.textContent = '?';
         instructionDisplay.textContent = 'Escucha y encuentra la letra';
         
-        // Reproducir sonido de la letra
         setTimeout(() => {
             playLetterSound(currentLetter);
-        }, 500);
+        }, 1000);
     }
     
     // Iniciar juego
     function startGame() {
+        // ========== NUEVO CÓDIGO ========== //
+        // Obtener el valor de puntos para ganar
+        const inputValue = parseInt(pointsInput.value);
+        pointsToWin = isNaN(inputValue) || inputValue < 1 ? 27 : inputValue;
+        // ========== FIN NUEVO CÓDIGO ========== //
+        
         isGameActive = true;
         score = 0;
         scoreDisplay.textContent = score;
         startBtn.disabled = true;
+        currentLetterDisplay.textContent = '?';
+        instructionDisplay.textContent = 'Escucha y encuentra la letra';
         pickRandomLetter();
     }
     
@@ -174,15 +214,12 @@ document.addEventListener('DOMContentLoaded', function() {
         preloadLetterSounds();
         initAlphabetGrid();
         
-        // Habilitar audio en móviles
         document.body.addEventListener('touchstart', function initAudio() {
-            // Reproducir sonido silencioso para activar audio
             const ctx = new (window.AudioContext || window.webkitAudioContext)();
             const oscillator = ctx.createOscillator();
             oscillator.connect(ctx.destination);
             oscillator.start();
             oscillator.stop(ctx.currentTime + 0.001);
-            
             this.removeEventListener('touchstart', initAudio);
         }, { once: true });
     });
