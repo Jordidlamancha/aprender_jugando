@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const letterSounds = {};
     const TOTAL_LETTERS = alphabet.length;
     // ========== NUEVA VARIABLE ========== //
-    let pointsToWin = 27; // Valor por defecto
+    let pointsToWin = 10; // Valor por defecto
     // ========== FIN NUEVA VARIABLE ========== //
     
     // Sonidos locales
