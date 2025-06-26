@@ -1,5 +1,6 @@
 body {
     font-family: 'Comic Neue', cursive;
+
     background-color: #ffffff;
     margin: 0;
     padding: 0;
@@ -10,7 +11,8 @@ body {
 }
 
 .app-container {
-    background-color: #f7bce3;
+    background-image: linear-gradient(to right,#FF9898, #FEE99A);
+    /* background-color: #f7bce3; */
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     padding: 30px;
@@ -20,12 +22,47 @@ body {
 }
 
 h1 {
+    font-family: "Sixtyfour Convergence", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+    "BLED" 0,
+    "SCAN" 0,
+    "XELA" 0,
+    "YELA" 0;
     color: #ff6b6b;
     margin-bottom: 20px;
 }
 
 .game-controls {
     margin-bottom: 20px;
+    
+}
+
+.letter-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.sound-btn {
+    background: none;
+    border: none;
+    color: #4a6fa5;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.sound-btn:hover {
+    transform: scale(1.1);
+    color: #3a5a8a;
+}
+
+.sound-btn:active {
+    transform: scale(0.95);
 }
 
 .btn {
@@ -35,10 +72,17 @@ h1 {
     padding: 10px 20px;
     margin: 0 10px;
     border-radius: 50px;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
     transition: all 0.3s;
-    font-family: 'Comic Neue', cursive;
+    /* font-family: 'Comic Neue', cursive; */
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.btn i {
+    margin-right: 8px;
 }
 
 .btn:hover {
@@ -47,6 +91,9 @@ h1 {
 }
 
 .points-input-container {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
     margin: 15px 0;
     padding: 10px;
     background: #f0f8ff;
@@ -64,12 +111,18 @@ h1 {
 }
 
 .score-container {
-    font-size: 20px;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
     margin-bottom: 15px;
     color: #555;
 }
 
 .instruction-container {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
     margin-bottom: 20px;
     min-height: 30px;
 }
@@ -134,6 +187,8 @@ h1 {
     background-color: #e74c3c;
     animation: shake 0.5s;
 }
+
+
 
 @keyframes pulse {
     0% { transform: scale(1); }

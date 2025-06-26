@@ -20,11 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const resetBtn = document.getElementById('reset-btn');
     const scoreDisplay = document.getElementById('score');
     const instructionDisplay = document.getElementById('instruction');
-    const currentLetterDisplay = document.getElementById('current-letter');
-    
-    // ========== NUEVO ELEMENTO ========== //
-    const pointsInput = document.getElementById('points-input'); // Añade este input en tu HTML
-    // ========== FIN NUEVO ELEMENTO ========== //
+    const letterDisplay = document.getElementById('letter-display');
+    const repeatSoundBtn = document.getElementById('repeat-sound-btn');
+    const pointsInput = document.getElementById('points-input');
     
     // Variables del juego
     let score = 0;
@@ -33,14 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const alphabet = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split('');
     const letterSounds = {};
     const TOTAL_LETTERS = alphabet.length;
-    // ========== NUEVA VARIABLE ========== //
     let pointsToWin = 10; // Valor por defecto
-    // ========== FIN NUEVA VARIABLE ========== //
     
     // Sonidos locales
     const correctSound = new Audio('./media/effects/cheer.mp3');
     const wrongSound = new Audio('./media/effects/lose.mp3');
-    const victorySound = new Audio('./media/effects/applause.mp3'); // Corregido el nombre del archivo
+    const victorySound = new Audio('./media/effects/applause.mp3');
 
     // Ajustar volúmenes
     correctSound.volume = 0.1;
@@ -85,20 +81,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Manejar respuesta correcta
     function handleCorrectAnswer(card) {
+        const selectedLetter = card.dataset.letter; // Obtiene la letra clickeada
         card.classList.add('correct');
-        
-        playLetterSound(currentLetter);
-        correctSound.currentTime = 0;
-        correctSound.play();
+        playLetterSound(selectedLetter); // Reproduce el sonido de ESA letra
+        correctSound.currentTime = 0; // Reinicia el sonido de CORRECTO
+        correctSound.play(); // Reproduce el sonido de CORRECTO
         
         updateScore(1);
         showConfetti();
         
         setTimeout(() => {
             card.classList.remove('correct');
-            // ========== ACTUALIZADO ========== //
-            if (score < pointsToWin) { // Usamos pointsToWin en lugar de TOTAL_LETTERS
-            // ========== FIN ACTUALIZADO ========== //
+            if (score < pointsToWin) {
                 pickRandomLetter();
             }
         }, 3000);
@@ -106,11 +100,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Manejar respuesta incorrecta
     function handleWrongAnswer(card) {
+        const selectedLetter = card.dataset.letter; // Obtiene la letra clickeada
         card.classList.add('incorrect');
-        wrongSound.currentTime = 0;
-        wrongSound.play();
-        updateScore(-1);
-        
+        playLetterSound(selectedLetter); // Reproduce el sonido de ESA letra
+        wrongSound.currentTime = 0; // Reinicia el sonido de error
+        wrongSound.play(); // Reproduce el sonido de error
+        updateScore(-1); // 3. Penalizar puntuación
         setTimeout(() => {
             card.classList.remove('incorrect');
         }, 2000);
@@ -129,9 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
         score = Math.max(0, score + points);
         scoreDisplay.textContent = score;
         
-        // ========== ACTUALIZADO ========== //
-        if (score >= pointsToWin) { // Usamos pointsToWin en lugar de TOTAL_LETTERS
-        // ========== FIN ACTUALIZADO ========== //
+        if (score >= pointsToWin) {
             gameComplete();
         }
     }
@@ -140,11 +133,9 @@ document.addEventListener('DOMContentLoaded', function() {
         isGameActive = false;
         victorySound.currentTime = 0;
         victorySound.play();
-        
-        // ========== ACTUALIZADO ========== //
         instructionDisplay.textContent = `¡GANASTE! Has alcanzado ${pointsToWin} puntos.`;
-        // ========== FIN ACTUALIZADO ========== //
-        currentLetterDisplay.textContent = '★';
+        letterDisplay.textContent = '★';
+        repeatSoundBtn.style.display = 'none';
         
         // Celebración mejorada
         showConfetti();
@@ -170,27 +161,30 @@ document.addEventListener('DOMContentLoaded', function() {
     function pickRandomLetter() {
         const randomIndex = Math.floor(Math.random() * alphabet.length);
         currentLetter = alphabet[randomIndex];
-        currentLetterDisplay.textContent = '?';
+        letterDisplay.textContent = '?';
+        repeatSoundBtn.style.display = 'none';
         instructionDisplay.textContent = 'Escucha y encuentra la letra';
         
         setTimeout(() => {
             playLetterSound(currentLetter);
+            // Muestra el botón después de que suene la letra
+            setTimeout(() => {
+                repeatSoundBtn.style.display = 'inline-block';
+            }, 500);
         }, 1000);
     }
     
     // Iniciar juego
     function startGame() {
-        // ========== NUEVO CÓDIGO ========== //
-        // Obtener el valor de puntos para ganar
         const inputValue = parseInt(pointsInput.value);
         pointsToWin = isNaN(inputValue) || inputValue < 1 ? 27 : inputValue;
-        // ========== FIN NUEVO CÓDIGO ========== //
         
         isGameActive = true;
         score = 0;
         scoreDisplay.textContent = score;
         startBtn.disabled = true;
-        currentLetterDisplay.textContent = '?';
+        letterDisplay.textContent = '?';
+        repeatSoundBtn.style.display = 'none';
         instructionDisplay.textContent = 'Escucha y encuentra la letra';
         pickRandomLetter();
     }
@@ -199,7 +193,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function resetGame() {
         isGameActive = false;
         startBtn.disabled = false;
-        currentLetterDisplay.textContent = '?';
+        letterDisplay.textContent = '?';
+        repeatSoundBtn.style.display = 'none';
         instructionDisplay.textContent = 'Presiona "Iniciar Juego" para comenzar';
         score = 0;
         scoreDisplay.textContent = score;
@@ -208,6 +203,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listeners
     startBtn.addEventListener('click', startGame);
     resetBtn.addEventListener('click', resetGame);
+    repeatSoundBtn.addEventListener('click', function() {
+        if (isGameActive && currentLetter) {
+            playLetterSound(currentLetter);
+        }
+    });
     
     // Precargar sonidos al iniciar
     window.addEventListener('load', function() {

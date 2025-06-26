@@ -4,16 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aprende las Letras</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="./abc.css">
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <div class="app-container">
-        <h1>Aprende a leer jugando</h1>
+        <h1>APRENDE JUGANDO</h1>
         
         <div class="game-controls">
-            <button id="start-btn" class="btn">Iniciar Juego</button>
-            <button id="reset-btn" class="btn">Reiniciar</button>
+            <button id="start-btn" class="btn">
+                <i class="fas fa-play"></i> Iniciar
+            </button>
+            <button id="reset-btn" class="btn">
+                <i class="fas fa-redo"></i> Reiniciar
+            </button>
         </div>
         
         <div class="points-input-container">
@@ -30,7 +43,12 @@
         </div>
         
         <div class="letter-container">
-            <div id="current-letter" class="letter-display">?</div>
+            <div id="current-letter" class="letter-display">
+                <span id="letter-display">?</span>
+                <button id="repeat-sound-btn" class="sound-btn" style="display: none;">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+            </div>
         </div>
         
         <div class="alphabet-grid" id="alphabet-grid">
