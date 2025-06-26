@@ -1,0 +1,239 @@
+body {
+    font-family: 'Comic Neue', cursive;
+
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.app-container {
+    background-image: linear-gradient(to right,#FF9898, #FEE99A);
+    /* background-color: #f7bce3; */
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+}
+
+h1 {
+    font-family: "Sixtyfour Convergence", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+    "BLED" 0,
+    "SCAN" 0,
+    "XELA" 0,
+    "YELA" 0;
+    color: #ff6b6b;
+    margin-bottom: 20px;
+}
+
+.game-controls {
+    margin-bottom: 20px;
+    
+}
+
+.letter-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.sound-btn {
+    background: none;
+    border: none;
+    color: #4a6fa5;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.sound-btn:hover {
+    transform: scale(1.1);
+    color: #3a5a8a;
+}
+
+.sound-btn:active {
+    transform: scale(0.95);
+}
+
+.btn#back-btn {
+    background-color: #ff9f43; /* Color naranja para distinguirlo */
+}
+
+.btn#back-btn:hover {
+    background-color: #e08f3a; /* Color más oscuro al pasar el mouse */
+}
+
+/* Opcional: Añade transición al icono */
+.btn#back-btn i {
+    transition: transform 0.2s;
+}
+
+.btn#back-btn:hover i {
+    transform: translateX(-3px); /* Efecto de movimiento hacia la izquierda */
+}
+
+.btn {
+    background-color: #4ecdc4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 50px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    /* font-family: 'Comic Neue', cursive; */
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+.btn:hover {
+    background-color: #3dbeb5;
+    transform: scale(1.05);
+}
+
+.points-input-container {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    margin: 15px 0;
+    padding: 10px;
+    background: #f0f8ff;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.points-input-container input {
+    padding: 8px;
+    width: 60px;
+    text-align: center;
+    border: 2px solid #4ecdc4;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.score-container {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.instruction-container {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 20px;
+    min-height: 30px;
+}
+
+#instruction {
+    font-size: 18px;
+    color: #666;
+}
+
+.letter-container {
+    margin: 20px 0;
+}
+
+.letter-display {
+    font-size: 100px;
+    font-weight: bold;
+    color: #ff9f43;
+    background-color: #f7f7f7;
+    border-radius: 15px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.alphabet-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.letter-card {
+    background-color: #74b9ff;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.letter-card:hover {
+    transform: scale(1.1);
+}
+
+.letter-card.correct {
+    background-color: #2ecc71;
+    animation: pulse 0.5s;
+}
+
+.letter-card.incorrect {
+    background-color: #e74c3c;
+    animation: shake 0.5s;
+}
+
+
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+@media (max-width: 600px) {
+    .alphabet-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .letter-card {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+    
+    .letter-display {
+        font-size: 70px;
+        width: 90px;
+        height: 90px;
+    }
+
+}

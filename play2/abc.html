@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprende las Letras</title>
+    
+    <link rel="stylesheet" href="./abc.css">
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="app-container">
+        <h1>APRENDE JUGANDO</h1>
+        
+        <div class="game-controls">
+            <button id="start-btn" class="btn">
+                <i class="fas fa-play"></i> Iniciar
+            </button>
+            <button id="reset-btn" class="btn">
+                <i class="fas fa-redo"></i> Reiniciar
+            </button>
+        </div>
+        
+        <div class="points-input-container">
+            <label for="points-input">Puntos para ganar:</label>
+            <input type="number" id="points-input" min="1" max="100" value="10">
+        </div>
+
+        <div class="score-container">
+            <p>Puntos: <span id="score">0</span></p>
+        </div>
+        
+        <div class="instruction-container">
+            <p id="instruction">Presiona "Iniciar Juego" para comenzar</p>
+        </div>
+        
+        <div class="letter-container">
+            <div id="current-letter" class="letter-display">
+                <span id="letter-display">?</span>
+                <button id="repeat-sound-btn" class="sound-btn" style="display: none;">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="alphabet-grid" id="alphabet-grid">
+            <!-- Las letras se generarán con JavaScript -->
+        </div>
+
+        <div class="game-controls">
+        <button id="back-btn" class="btn" onclick="window.location.href='../index.html'">
+            <i class="fas fa-arrow-left"></i> Volver
+        </button>
+    <!-- Mantén tus otros botones aquí -->
+</div>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script src='../play2/abc.js'></script>
+</body>
+</html>

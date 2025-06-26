@@ -1,0 +1,153 @@
+body {
+    font-family: 'Comic Neue', cursive;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../assets/img/kids-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.main-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 1200px;
+    padding: 30px;
+    margin: 20px 0;
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.app-header h1 {
+    font-family: "Press Start 2P", system-ui;
+    color: #ff6b6b;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.music-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.music-btn {
+    background-color: #4ecdc4;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.music-btn:hover {
+    background-color: #3dbeb5;
+    transform: scale(1.1);
+}
+
+#music-status {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.game-card {
+    background: linear-gradient(135deg, #FF9898, #FEE99A);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.game-icon {
+    font-size: 3.5rem;
+    color: white;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.game-card h2 {
+    font-family: "Press Start 2P", system-ui;
+    color: #4a6fa5;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.game-card p {
+    color: #555;
+    font-size: 1rem;
+}
+
+.app-footer {
+    text-align: center;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 0.7rem;
+    color: #888;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .app-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .game-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding: 15px;
+    }
+    
+    .app-header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .game-icon {
+        font-size: 2.5rem;
+    }
+    
+    .game-card h2 {
+        font-size: 1rem;
+    }
+    
+    .game-card p {
+        font-size: 0.9rem;
+    }
+}

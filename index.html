@@ -3,61 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aprende las Letras</title>
+    <meta name="description" content="App educativa para que los niños aprendan a leer jugando">
+    <title>Aprende a Leer Jugando - Juegos Educativos para Niños</title>
     
-    <link rel="stylesheet" href="./abc.css">
-    <!-- Fuentes -->
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <!-- Preconexión para fuentes y CDNs -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon (recomendado) -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    
+    <!-- Precarga de audio para mejor performance -->
+    <link rel="preload" href="assets/audio/children-music.mp3" as="audio">
 </head>
 <body>
-    <div class="app-container">
-        <h1>APRENDE JUGANDO</h1>
-        
-        <div class="game-controls">
-            <button id="start-btn" class="btn">
-                <i class="fas fa-play"></i> Iniciar
-            </button>
-            <button id="reset-btn" class="btn">
-                <i class="fas fa-redo"></i> Reiniciar
-            </button>
-        </div>
-        
-        <div class="points-input-container">
-            <label for="points-input">Puntos para ganar:</label>
-            <input type="number" id="points-input" min="1" max="100" value="27">
-        </div>
-
-        <div class="score-container">
-            <p>Puntos: <span id="score">0</span></p>
-        </div>
-        
-        <div class="instruction-container">
-            <p id="instruction">Presiona "Iniciar Juego" para comenzar</p>
-        </div>
-        
-        <div class="letter-container">
-            <div id="current-letter" class="letter-display">
-                <span id="letter-display">?</span>
-                <button id="repeat-sound-btn" class="sound-btn" style="display: none;">
-                    <i class="fas fa-volume-up"></i>
-                </button>
-            </div>
-        </div>
-        
-        <div class="alphabet-grid" id="alphabet-grid">
-            <!-- Las letras se generarán con JavaScript -->
-        </div>
-    </div>
+    <!-- Reproductor de audio con atributos de accesibilidad -->
+    <audio id="bg-music" loop aria-label="Música de fondo">
+        <source src="./media/melodia/Carousel Canoodle - Joel Cummins.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
     
+    <div class="main-container">
+        <!-- Cabecera con ARIA labels -->
+        <header class="app-header" role="banner">
+            <h1>APRENDE A LEER JUGANDO</h1>
+            <div class="music-controls">
+                <button id="music-toggle" class="music-btn" aria-label="Control de música">
+                    <i class="fas fa-music" aria-hidden="true"></i>
+                </button>
+                <span id="music-status" aria-live="polite">Música: ON</span>
+            </div>
+        </header>
+        
+        <!-- Contenido principal con semántica mejorada -->
+        <main class="games-grid" role="main">
+            <!-- Tarjeta 1 -->
+            <article class="game-card" role="button" tabindex="0" onclick="location.href='./play2/abc.html'" 
+                    aria-label="Aprende las Letras - Reconoce y escucha las letras del abecedario">
+                <div class="game-icon" aria-hidden="true">
+                    <i class="fas fa-font"></i>
+                </div>
+                <h2>Aprende las Letras</h2>
+                <p>Reconoce y escucha las letras del abecedario</p>
+            </article>
+            
+            <!-- Tarjeta 2 -->
+            <article class="game-card" role="button" tabindex="0" onclick="location.href='juegos/silabas/index.html'"
+                    aria-label="Forma Sílabas - Combina letras para formar sílabas">
+                <div class="game-icon" aria-hidden="true">
+                    <i class="fas fa-align-left"></i>
+                </div>
+                <h2>Forma Sílabas</h2>
+                <p>Combina letras para formar sílabas</p>
+            </article>
+            
+            <!-- Tarjeta 3 -->
+            <article class="game-card" role="button" tabindex="0" onclick="location.href='juegos/palabras/index.html'"
+                    aria-label="Armando Palabras - Une sílabas para formar palabras completas">
+                <div class="game-icon" aria-hidden="true">
+                    <i class="fas fa-spell-check"></i>
+                </div>
+                <h2>Armando Palabras</h2>
+                <p>Une sílabas para formar palabras completas</p>
+            </article>
+            
+            <!-- Tarjeta 4 -->
+            <article class="game-card" role="button" tabindex="0" onclick="location.href='juegos/cuentos/index.html'"
+                    aria-label="Cuentos Interactivos - Lee y completa historias divertidas">
+                <div class="game-icon" aria-hidden="true">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h2>Cuentos Interactivos</h2>
+                <p>Lee y completa historias divertidas</p>
+            </article>
+            
+            <!-- Tarjeta 5 -->
+            <article class="game-card" role="button" tabindex="0" onclick="location.href='juegos/vocales/index.html'"
+                    aria-label="Las Vocales - Especial para los más pequeños">
+                <div class="game-icon" aria-hidden="true">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+                <h2>Las Vocales</h2>
+                <p>Especial para los más pequeños</p>
+            </article>
+            
+            <!-- Tarjeta 6 -->
+            <article class="game-card" role="button" tabindex="0" onclick="location.href='juegos/rompecabezas/index.html'"
+                    aria-label="Rompecabezas de Letras - Arma palabras con piezas divertidas">
+                <div class="game-icon" aria-hidden="true">
+                    <i class="fas fa-puzzle-piece"></i>
+                </div>
+                <h2>Rompecabezas de Letras</h2>
+                <p>Arma palabras con piezas divertidas</p>
+            </article>
+        </main>
+        
+        <!-- Pie de página con información adicional -->
+        <footer class="app-footer" role="contentinfo">
+            <p>© <span id="current-year">2023</span> Aprende Jugando - Para niños curiosos</p>
+            <p class="credits">Música: <a href="https://freemusicarchive.org/" target="_blank" rel="noopener">Free Music Archive</a></p>
+        </footer>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-    <script src="./abc.js"></script>
+    <!-- Scripts al final del body para mejor rendimiento -->
+    <script src="./main.js"></script>
+    <script>
+        // Actualizar año automáticamente
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
