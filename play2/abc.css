@@ -36,6 +36,7 @@ h1 {
 }
 
 .game-controls {
+    margin-top: 50px; /* Añade este margen superior */
     margin-bottom: 20px;
     
 }

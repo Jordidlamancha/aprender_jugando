@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    // Bloqueador de inspección (opcional - descomentar si necesario)
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        alert('¡Vamos a seguir aprendiendo! Esta función está deshabilitada.');
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'F12' || 
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || 
+            (e.ctrlKey && e.key === 'u')) {
+            e.preventDefault();
+            alert('¡Enfócate en el juego! Las teclas están deshabilitadas.');
+        }
+    });
+    
     // Elementos del DOM
     const bgMusic = document.getElementById('bg-music');
     const musicToggle = document.getElementById('music-toggle');
@@ -83,20 +99,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.addEventListener('click', initAfterInteraction, { once: true });
     document.body.addEventListener('touchstart', initAfterInteraction, { once: true });
 
-    // Bloqueador de inspección (opcional - descomentar si necesario)
-    
-    // document.addEventListener('contextmenu', function(e) {
-    //     e.preventDefault();
-    //     alert('¡Vamos a seguir aprendiendo! Esta función está deshabilitada.');
-    // });
-
-    // document.addEventListener('keydown', function(e) {
-    //     if (e.key === 'F12' || 
-    //         (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || 
-    //         (e.ctrlKey && e.key === 'u')) {
-    //         e.preventDefault();
-    //         alert('¡Enfócate en el juego! Las teclas están deshabilitadas.');
-    //     }
-    // });
-    
 });
