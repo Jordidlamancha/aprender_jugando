@@ -1,19 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // Bloqueador de inspección (opcional - descomentar si necesario)
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        alert('¡Vamos a seguir aprendiendo! Esta función está deshabilitada.');
-    });
+    // document.addEventListener('contextmenu', function(e) {
+    //     e.preventDefault();
+    //     alert('¡Vamos a seguir aprendiendo! Esta función está deshabilitada.');
+    // });
 
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'F12' || 
-            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || 
-            (e.ctrlKey && e.key === 'u')) {
-            e.preventDefault();
-            alert('¡Enfócate en el juego! Las teclas están deshabilitadas.');
-        }
-    });
+    // document.addEventListener('keydown', function(e) {
+    //     if (e.key === 'F12' || 
+    //         (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || 
+    //         (e.ctrlKey && e.key === 'u')) {
+    //         e.preventDefault();
+    //         alert('¡Enfócate en el juego! Las teclas están deshabilitadas.');
+    //     }
+    // });
     
     // Elementos del DOM
     const bgMusic = document.getElementById('bg-music');
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function setupAudio() {
         // Precargar y configurar música
         bgMusic.load();
-        bgMusic.volume = 0.1; // Volumen moderado para niños
+        bgMusic.volume = 0.4; // Volumen moderado para niños
         
         // Establecer estado inicial en UI
         musicStatus.textContent = bgMusic.play ? "Música: ON":"Música: OFF" ;

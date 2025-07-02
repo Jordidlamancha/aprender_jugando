@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Vocales - Aprende Jugando</title>
+    <link rel="stylesheet" href="../play1/vocal.css">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <div class="vowels-container">
+        <h1>LAS VOCALES</h1>
+        <p class="instruction">Toca una tarjeta para escuchar la vocal y el animal</p>
+        
+        <div class="cards-grid">
+            <!-- Tarjeta A -->
+            <div class="vowel-card" data-vowel="A">
+                <div class="card-front">
+                    <span>A</span>
+                    <span>a</span>
+                </div>
+                <div class="card-back">
+                    <img src="../media/img/ardilla.webp" alt="Ardilla" class="animal-img">
+                    <p>ARDILLA</p>
+                </div>
+            </div>
+            
+            <!-- Tarjeta E -->
+            <div class="vowel-card" data-vowel="E">
+                <div class="card-front">
+                    <span>E</span>
+                    <span>e</span>
+                </div>
+                <div class="card-back">
+                    <img src="../media/img/elefante.png" alt="Elefante" class="animal-img">
+                    <p>ELEFANTE</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta I -->
+            <div class="vowel-card" data-vowel="I">
+                <div class="card-front">
+                    <span>I</span>
+                    <span>i</span>
+                </div>
+                <div class="card-back">
+                    <img src="../media/img/iguana.png" alt="iguana" class="animal-img">
+                    <p>IGUANA</p>
+                </div>
+            </div>
+            
+            <!-- Tarjeta O -->
+            <div class="vowel-card" data-vowel="O">
+                <div class="card-front">
+                    <span>O</span>
+                    <span>o</span>
+                </div>
+                <div class="card-back">
+                    <img src="../media/img/oso.png" alt="oso" class="animal-img">
+                    <p>OSO</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta O -->
+            <div class="vowel-card" data-vowel="U">
+                <div class="card-front">
+                    <span>U</span>
+                    <span>u</span>
+                </div>
+                <div class="card-back">
+                    <img src="../media/img/urraca.png" alt="urraca" class="animal-img">
+                    <p>URRACA</p>
+                </div>
+            </div>
+            <!-- (Repetir para I, O, U) -->
+        </div>
+    </div>
+
+    <!-- Botón de volver -->
+    <a href="../../index.html" class="back-button" aria-label="Volver al inicio">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+
+    <!-- Audio (oculto) -->
+    <audio id="vowel-sound" src=""></audio>
+    <audio id="animal-sound" src=""></audio>
+
+    <script src="../play1/vocal.js"></script>
+</body>
+</html>

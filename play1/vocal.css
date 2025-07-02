@@ -1,0 +1,113 @@
+/* Estilos específicos para el juego de vocales */
+.vowels-container {
+    text-align: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.vowels-container h1 {
+    font-family: "Press Start 2P", cursive;
+    color: #FF6B6B;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.instruction {
+    font-family: "Comic Neue", cursive;
+    color: #4A6FA5;
+    margin-bottom: 30px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.vowel-card {
+    aspect-ratio: 1/1;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-front {
+    background: linear-gradient(135deg, #4ECDC4, #FFE66D);
+    color: white;
+    font-size: 4rem;
+    font-family: "Press Start 2P", cursive;
+}
+
+.card-front span:first-child {
+    margin-bottom: 10px;
+}
+
+.card-back {
+    background: white;
+    transform: rotateY(180deg);
+    padding: 10px;
+}
+
+.card-back p {
+    font-family: "Press Start 2P", cursive;
+    color: #FF6B6B;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.animal-img {
+    width: 80%;
+    max-height: 70%;
+    object-fit: contain;
+}
+
+.vowel-card.flipped .card-front {
+    transform: rotateY(180deg);
+}
+
+.vowel-card.flipped .card-back {
+    transform: rotateY(0deg);
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.5rem;
+    color: #ffffff;
+    background: rgb(228, 139, 6);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr));
+    }
+    
+    .card-front {
+        font-size: 3rem;
+    }
+}
