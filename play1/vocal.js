@@ -108,12 +108,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error("Error en la secuencia de sonidos:", e);
             }
             
-            // 4. Reiniciar después de 4 segundos (si no se ha hecho clic de nuevo)
+            // 4. Reiniciar después de 2 segundos (si no se ha hecho clic de nuevo)
             setTimeout(() => {
                 if (card.classList.contains('flipped')) {
                     card.classList.remove('flipped');
                 }
-            }, 4000);
+            }, 1000);
         });
     });
 

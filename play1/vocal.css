@@ -1,8 +1,16 @@
+/* Fondo degradado animado */
+body {
+    font-family: 'Comic Neue', cursive;
+    background-image: linear-gradient(to right,#f1dc62, #a39fe2);
+    /* background-color: #ffffff; */
+    
+}
+
 /* Estilos específicos para el juego de vocales */
 .vowels-container {
     text-align: center;
     padding: 20px;
-    max-width: 800px;
+    max-width: 400px;
     margin: 0 auto;
 }
 
