@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sílabas - Aprende Jugando</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../play4/silabas.css">
+</head>
+<body>
+    <a href="../index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <div class="syllables-container">
+        <h1>JUEGO DE SÍLABAS</h1>
+
+        <div class="game-extras">
+    <div class="star-rating">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span id="score">0 pts</span>
+    </div>
+    
+    <div class="character-guide">
+    <div class="speech-bubble" id="speechBubble"></div>
+    <img src="../media/img/profe.png" alt="Profesor" id="character">
+</div>
+</div>
+
+<div class="word-generator hidden">
+    <h3>Generador de Palabras</h3>
+    <div class="syllables-pool"></div>
+    <div class="word-display" id="wordDisplay"></div>
+    <button id="generateBtn">Generar Nueva</button>
+</div>
+        
+        <div class="difficulty-selector">
+            <button class="difficulty-btn active" data-level="easy">FÁCIL</button>
+            <button class="difficulty-btn" data-level="medium">INTERMEDIO</button>
+            <button class="difficulty-btn" data-level="hard">AVANZADO</button>
+        </div>
+
+        <div class="syllables-grid" id="syllablesGrid">
+            <!-- Las sílabas se cargan dinámicamente con JS -->
+        </div>
+
+        <div class="feedback">
+            <div id="resultMessage"></div>
+            <button id="nextBtn" class="hidden">SIGUIENTE</button>
+        </div>
+    </div>
+
+    <audio id="correctSound" src="../media/effects/cheer.mp3"></audio>
+    <audio id="wrongSound" src="../media/effects/lose.mp3"></audio>
+
+    
+
+    <!-- Botón de volver -->
+    <a href="../index.html" class="back-button" aria-label="Volver al inicio">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <script src="../play4/silaba.js"></script>
+</body>
+</html>
